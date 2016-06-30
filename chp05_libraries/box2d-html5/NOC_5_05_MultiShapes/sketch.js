@@ -12,7 +12,7 @@ var boundaries = [];
 var pops = [];
 
 function setup() {
-  createCanvas(640,360);
+  createCanvas(window.innerWidth,window.innerHeight);
 
   // Initialize box2d physics and create the world
   world = createWorld();
@@ -25,7 +25,7 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background(255,0,0);
 
   // We must always step through time!
   var timeStep = 1.0/30;

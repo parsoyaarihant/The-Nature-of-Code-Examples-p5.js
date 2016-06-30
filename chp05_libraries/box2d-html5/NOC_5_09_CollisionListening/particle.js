@@ -18,14 +18,25 @@ function Particle(x,y,r) {
   // Define a fixture
   var fd = new box2d.b2FixtureDef();
   // Fixture holds shape
-  fd.shape = new box2d.b2CircleShape();
-  fd.shape.m_radius = scaleToWorld(this.r);
-  
+  var vertices = [];
+  vertices[3] = scaleToWorld(-15, 25);
+  vertices[2] = scaleToWorld(15, 0);
+  vertices[1] = scaleToWorld(20, -15);
+  vertices[0] = scaleToWorld(-10, -10);
+
+  // Fixture holds shape
+  fd.shape = new box2d.b2PolygonShape();
+  fd.shape.SetAsArray(vertices,vertices.length);
+
+
+  //fd.shape = new box2d.b2CircleShape();
+  //fd.shape.m_radius = scaleToWorld(this.r);
+
   // Some physics
   fd.density = 1.0;
   fd.friction = 0.1;
   fd.restitution = 0.3;
- 
+
   // Create the body
   this.body = world.CreateBody(bd);
   // Attach the fixture
@@ -65,7 +76,7 @@ function Particle(x,y,r) {
     var pos = scaleToPixels(this.body.GetPosition());
     // Get its angle of rotation
     var a = this.body.GetAngleRadians();
-    
+
     // Draw it!
     rectMode(CENTER);
     push();
@@ -74,7 +85,14 @@ function Particle(x,y,r) {
     fill(this.col);
     stroke(200);
     strokeWeight(2);
-    ellipse(0,0,this.r*2,this.r*2);
+    beginShape(CLOSE);
+    vertex(-15,25);
+    vertex(15,0);
+    vertex(20,-15);
+    vertex(-10,-10);
+    vertex(-15,25);
+    endShape();
+    //ellipse(0,0,this.r*2,this.r*2);
     // Let's add a line so we can see the rotation
     line(0,0,this.r,0);
     pop();

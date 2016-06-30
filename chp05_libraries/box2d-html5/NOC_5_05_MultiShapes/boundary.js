@@ -18,9 +18,9 @@ function Boundary(x_,y_, w_, h_) {
   fd.density = 1.0;
   fd.friction = 0.5;
   fd.restitution = 0.2;
- 
+
   var bd = new box2d.b2BodyDef();
- 
+
   bd.type = box2d.b2BodyType.b2_staticBody;
   bd.position.x = scaleToWorld(this.x);
   bd.position.y = scaleToWorld(this.y);
@@ -30,8 +30,8 @@ function Boundary(x_,y_, w_, h_) {
 
   // Draw the boundary, if it were at an angle we'd have to do something fancier
   this.display = function() {
-    fill(127);
-    stroke(200);
+    fill(0);
+    stroke(0);
     rectMode(CENTER);
     rect(this.x,this.y,this.w,this.h);
   }

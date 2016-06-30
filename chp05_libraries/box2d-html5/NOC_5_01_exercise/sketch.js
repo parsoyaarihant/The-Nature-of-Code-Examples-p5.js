@@ -6,7 +6,7 @@
 var boxes = [];
 
 function setup() {
-  createCanvas(640,360);
+  createCanvas(window.innerWidth,window.innerHeight);
 }
 
 function draw() {

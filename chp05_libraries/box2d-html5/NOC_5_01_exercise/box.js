@@ -7,8 +7,8 @@
 
 // Constructor
 function Box(x, y) {
-  this.x = x;
-  this.y = y;
+  this.x = window.innerWidth();
+  this.y = window.innerHeight();
   this.w = 16;
   this.h = 16;
 
@@ -21,5 +21,3 @@ function Box(x, y) {
     rect(this.x,this.y, this.w, this.h);
   }
 }
-
-
